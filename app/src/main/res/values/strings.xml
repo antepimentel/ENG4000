@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">ENG 4000</string>
+    <string name="menu_title">Main Menu</string>
+    <string name="my_household_title">My Household</string>
+    <string name="settings_title">Settings</string>
+    <string name="tips_title">Tips</string>
+    <string name="trophies_title">Trophies</string>
+</resources>

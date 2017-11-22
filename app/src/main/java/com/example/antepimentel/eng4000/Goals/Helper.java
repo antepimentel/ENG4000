@@ -1,4 +1,4 @@
-package com.example.antepimentel.eng4000.household;
+package com.example.antepimentel.eng4000.Goals;
 
 import java.util.ArrayList;
 

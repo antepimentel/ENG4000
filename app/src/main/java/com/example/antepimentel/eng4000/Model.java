@@ -11,6 +11,9 @@ import java.util.ArrayList;
 
 public class Model implements Parcelable{
 
+    public static boolean isInitialized = false;
+    public static ArrayList<Goal> sGoals = new ArrayList<Goal>();
+
     private ArrayList<Goal> goals = new ArrayList<Goal>();
 
 //========= CONSTRUCTORS =========//
@@ -19,15 +22,50 @@ public class Model implements Parcelable{
         this.goals = new ArrayList<Goal>();
     }
 
-//========= DATA LOADING =========//
+//========= METHODS =========//
 
     public void initialize(){
         // Does nothing so far
     }
 
-    public void loadData(){
+    public static void loadData(){
         // Load fake data for now
-        this.goals = Helper.loadGoals();
+        //this.goals = Helper.loadGoals();
+        sGoals = Helper.loadGoals();
+        isInitialized = true;
+    }
+
+    public void updateData(Model m){
+        this.goals = m.getGoals();
+    }
+
+    public static String print(){
+        String temp = "==== BEGIN MODEL ====\n";
+        for(int i = 0; i < sGoals.size(); i++){
+            temp = temp + sGoals.get(i).print();
+        }
+        temp = temp + "==== END MODEL ====\n";
+        return temp;
+    }
+
+    public static int getNumCompletedGoals(){
+        int k = 0;
+        for(int i = 0; i < sGoals.size(); i++){
+            if(sGoals.get(i).isCOMPLETE()){
+                k++;
+            }
+        }
+        return k;
+    }
+
+    public static int getTotalScore(){
+        int total = 0;
+        for(int i = 0; i < sGoals.size(); i++){
+            if(sGoals.get(i).isCOMPLETE()){
+                total += sGoals.get(i).getVALUE();
+            }
+        }
+        return total;
     }
 
 //========= GETTERS AND SETTERS =========//

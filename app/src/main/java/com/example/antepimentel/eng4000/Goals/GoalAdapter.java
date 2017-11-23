@@ -10,6 +10,8 @@ import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
+
+import com.example.antepimentel.eng4000.Model;
 import com.example.antepimentel.eng4000.R;
 import java.util.ArrayList;
 
@@ -38,17 +40,24 @@ public class GoalAdapter extends ArrayAdapter<Goal>{
         TextView points = (TextView)convertView.findViewById(R.id.points_view);
         CheckBox cb = (CheckBox)convertView.findViewById(R.id.checkBox);
 
-        cb.setChecked(goal.isCOMPLETE());
-        title.setText(goal.getTITLE());
-        points.setText("Value: " + Integer.toString(goal.getVALUE()));
+        //Get actual goal
+        //int index = Model.sGoals.indexOf(goal);
+        //System.out.println(index);
+
+        cb.setChecked(Model.sGoals.get(position).isCOMPLETE());
+        title.setText(Model.sGoals.get(position).getTITLE());
+        points.setText("Value: " + Integer.toString(Model.sGoals.get(position).getVALUE()));
+
+        final int index = position;
 
         cb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 //do stuff
-                goal.setCOMPLETE(isChecked);
-                System.out.println("GOT HERE");
+                //goal.setCOMPLETE(isChecked);
+                Model.sGoals.get(index).setCOMPLETE(isChecked);
+                System.out.println(Model.print());
             }
         });
 

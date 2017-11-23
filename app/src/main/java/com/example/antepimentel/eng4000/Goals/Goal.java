@@ -23,6 +23,15 @@ public class Goal implements Parcelable{
         this.COMPLETE = false;
     }
 
+    public String print(){
+        String temp = "";
+        temp = "ID:       " + Integer.toString(this.getID()) +
+             "\nTITLE:    " + this.getTITLE() +
+             "\nVALUE:    " + Integer.toString(this.getVALUE()) +
+             "\nCOMPLETE: " + this.isCOMPLETE() + "\n";
+        return temp;
+    }
+
     //========= PARCEL METHODS =========//
 
     private Goal(Parcel in){

@@ -15,7 +15,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Goals.GoalView"></activity>
+        <activity android:name=".Goals.GoalView" />
+        <activity android:name=".Goals.StatsView"></activity>
     </application>
 
 </manifest>

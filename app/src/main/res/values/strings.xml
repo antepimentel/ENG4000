@@ -4,5 +4,6 @@
     <string name="my_goals">Goals</string>
     <string name="settings_title">Settings</string>
     <string name="tips_title">Tips</string>
+    <string name="stats_title">Stats</string>
     <string name="trophies_title">Trophies</string>
 </resources>

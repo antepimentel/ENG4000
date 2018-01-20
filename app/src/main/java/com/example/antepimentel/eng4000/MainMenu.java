@@ -7,11 +7,8 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.antepimentel.eng4000.Goals.GoalView;
-import com.example.antepimentel.eng4000.Goals.StatsView;
 
 public class MainMenu extends AppCompatActivity {
-
-    //Model model = new Model();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

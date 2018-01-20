@@ -44,22 +44,21 @@ public class GoalAdapter extends ArrayAdapter<Goal>{
         //int index = Model.sGoals.indexOf(goal);
         //System.out.println(index);
 
-        cb.setChecked(Model.sGoals.get(position).isCOMPLETE());
-        title.setText(Model.sGoals.get(position).getTITLE());
-        points.setText("Value: " + Integer.toString(Model.sGoals.get(position).getVALUE()));
-
         final int index = position;
 
         cb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                //do stuff
-                //goal.setCOMPLETE(isChecked);
                 Model.sGoals.get(index).setCOMPLETE(isChecked);
                 System.out.println(Model.print());
             }
         });
+
+        // Note: These 3 lines need to be AFTER the setOnChecked listener or the checkboxes will always reset on scrolling
+        cb.setChecked(Model.sGoals.get(position).isCOMPLETE());
+        title.setText(Model.sGoals.get(position).getTITLE());
+        points.setText("Value: " + Integer.toString(Model.sGoals.get(position).getVALUE()));
 
         return convertView;
     }

@@ -16,7 +16,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Goals.GoalView" />
-        <activity android:name=".Goals.StatsView"></activity>
+        <activity android:name=".StatsView"></activity>
     </application>
 
 </manifest>

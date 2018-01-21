@@ -1,5 +1,8 @@
 package com.example.antepimentel.eng4000.Goals;
 
+import android.content.res.Resources;
+import android.util.DisplayMetrics;
+
 import java.util.ArrayList;
 
 /**
@@ -37,5 +40,13 @@ public class Helper {
         temp.add(new Goal("Test"+i, 100, i++));
 
         return temp;
+    }
+
+    public static int getScreenWidth() {
+        return Resources.getSystem().getDisplayMetrics().widthPixels;
+    }
+
+    public static int getScreenHeight() {
+        return Resources.getSystem().getDisplayMetrics().heightPixels;
     }
 }

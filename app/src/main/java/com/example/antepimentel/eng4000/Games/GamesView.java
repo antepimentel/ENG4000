@@ -1,5 +1,6 @@
 package com.example.antepimentel.eng4000.Games;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 
 import com.example.antepimentel.eng4000.Games.TapGame.TapGame;
+import com.example.antepimentel.eng4000.Games.TapGame.TapGameViewLauncher;
 import com.example.antepimentel.eng4000.R;
 
 public class GamesView extends AppCompatActivity {
@@ -24,9 +26,11 @@ public class GamesView extends AppCompatActivity {
         Button b = (Button)findViewById(R.id.button);
         b.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
-                TapGame tgView = new TapGame(getBaseContext(), getWindow().getDecorView().getMeasuredWidth(), getWindow().getDecorView().getMeasuredHeight());
-                setContentView(tgView);
-                getWindow().getDecorView().setBackgroundColor(Color.rgb(239,239,239));
+//                TapGame tgView = new TapGame(getBaseContext(), getWindow().getDecorView().getMeasuredWidth(), getWindow().getDecorView().getMeasuredHeight());
+//                setContentView(tgView);
+//                getWindow().getDecorView().setBackgroundColor(Color.rgb(239,239,239));
+                Intent intent = new Intent(GamesView.this, TapGameViewLauncher.class);
+                startActivity(intent);
             }
         });
     }

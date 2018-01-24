@@ -17,7 +17,9 @@
         </activity>
         <activity android:name=".Goals.GoalView" />
         <activity android:name=".StatsView" />
-        <activity android:name=".Games.GamesView"></activity>
+        <activity android:name=".Games.GamesView" />
+        <activity android:name=".Games.TapGame.TapGameViewLauncher"
+                  android:theme="@android:style/Theme.Black.NoTitleBar"></activity>
     </application>
 
 </manifest>

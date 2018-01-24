@@ -59,23 +59,56 @@ public class TapGame extends View {
             for(int j = 0; j < numColumns; j++){
                 float tempX = (float) (i * gridWidth);
                 float tempY = (float) (j * gridHeight) + verticalOffset;
+
+                Paint tempPaint = pOff;
+                if(gameBoard[j][i].getIsOn()){ // I feel like this SHOULD be gameBoard[i][j], but its not
+                    tempPaint = pOn;
+                }
                 canvas.drawRect(tempX + hBuff,
                                 tempY + vBuff,
                                 tempX + gridWidth - hBuff,
                                 tempY + gridHeight - vBuff,
-                                pOff);
+                                tempPaint);
             }
         }
+        invalidate();
     }
 
+    //TODO: Add touch listener thread to detect which square is pressed
     @Override
     public boolean onTouchEvent(MotionEvent event){
 
-        x = event.getX();
-        y = event.getY();
+        if(event.getAction() == MotionEvent.ACTION_DOWN) {
+            x = event.getX();
+            y = event.getY();
 
+            // Which column was pressed - X
+            int column = (int) Math.floor((double) x / gridWidth);
 
+            // Which row was pressed - Y
+            int row = (int) Math.floor((double) (y - verticalOffset) / gridHeight);
 
+            if (column >= 0 && column <= 3) {
+                if (row >= 0 && row <= 3) {
+                    gameBoard[row][column].setIsOn(!gameBoard[row][column].getIsOn());
+
+                }
+            }
+
+            System.out.println("TOUCH EVENT: " + column + " " + row);
+            String temp = "";
+
+            for(int i = 0; i < 4; i++){
+                for(int j = 0; j < 4; j++){
+                    if(gameBoard[i][j].getIsOn()){
+                        System.out.print(" O");
+                    } else {
+                        System.out.print(" X");
+                    }
+                }
+                System.out.println();
+            }
+        }
         return true;
     }
 
@@ -90,5 +123,4 @@ public class TapGame extends View {
 
     //TODO: Add thread to randomize the color of the squares
 
-    //TODO: Add touch listener thread to detect which square is pressed
 }

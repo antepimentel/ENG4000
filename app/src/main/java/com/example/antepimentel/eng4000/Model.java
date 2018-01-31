@@ -15,6 +15,7 @@ public class Model{
     public static ArrayList<Goal> sGoals = new ArrayList<Goal>();
     public static int points = 0;
     public static int numCompletedGoals= 0;
+    public static String pinNumber = "0000";
 
 //========= METHODS =========//
 
@@ -72,4 +73,9 @@ public class Model{
         points += getTotalScore();
         resetGoals();
     }
+
+//========= GETTERS AND SETTERS =========//
+
+
+
 }

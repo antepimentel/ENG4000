@@ -46,11 +46,24 @@ public class GoalView extends AppCompatActivity {
         int res_id = item.getItemId();
         if(res_id == R.id.goal_submit){
             //do stuff
+
+
+            Intent intent = new Intent(GoalView.this, Submit.class);
+            startActivityForResult(intent, 1);
+
+            //recreate();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if(resultCode == RESULT_OK){
+            System.out.println("Got Result!");
             int total = Model.getTotalScore();
             Model.submitGoals();
             Toast.makeText(getApplicationContext(), "Goals Submitted. New Score: " + Model.points, Toast.LENGTH_SHORT).show();
-            recreate();
         }
-        return super.onOptionsItemSelected(item);
     }
 }

@@ -2,6 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.antepimentel.eng4000">
 
+    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -18,8 +23,13 @@
         <activity android:name=".Goals.GoalView" />
         <activity android:name=".StatsView" />
         <activity android:name=".Games.GamesView" />
-        <activity android:name=".Games.TapGame.TapGameViewLauncher"
-                  android:theme="@android:style/Theme.Black.NoTitleBar"></activity>
+        <activity
+            android:name=".Games.TapGame.TapGameViewLauncher"
+            android:theme="@android:style/Theme.Black.NoTitleBar" />
+        <activity
+            android:name=".Submit"
+            android:label="@string/title_activity_submit" />
+        <activity android:name=".Goals.Submit"></activity>
     </application>
 
 </manifest>

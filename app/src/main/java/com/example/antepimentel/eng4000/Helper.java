@@ -1,7 +1,10 @@
-package com.example.antepimentel.eng4000.Goals;
+package com.example.antepimentel.eng4000;
 
 import android.content.res.Resources;
 import android.util.DisplayMetrics;
+
+import com.example.antepimentel.eng4000.Goals.Goal;
+import com.example.antepimentel.eng4000.Items.Item;
 
 import java.util.ArrayList;
 
@@ -12,6 +15,27 @@ import java.util.ArrayList;
  */
 
 public class Helper {
+
+    public static ArrayList<Item> loadItems(){
+        ArrayList<Item> temp = new ArrayList<Item>();
+
+        temp.add(new Item("Wizard Hat", true, 5));
+        temp.add(new Item("Mittens", false, 5));
+        temp.add(new Item("Birthday Hat", false, 5));
+        temp.add(new Item("Tuxedo", true, 5));
+        temp.add(new Item("Polka-dot Tie", false, 5));
+        temp.add(new Item("Bow Tie", false, 1));
+        temp.add(new Item("Snorkel and Goggles", false, 5));
+        temp.add(new Item("Sombrero", true, 5));
+        temp.add(new Item("Wizard Hat", false, 5));
+        temp.add(new Item("Wizard Hat", false, 5));
+        temp.add(new Item("Wizard Hat", false, 5));
+        temp.add(new Item("Wizard Hat", false, 5));
+        temp.add(new Item("Wizard Hat", false, 5));
+        temp.add(new Item("Wizard Hat", false, 5));
+
+        return temp;
+    }
 
     public static ArrayList<Goal> loadGoals(){
         ArrayList<Goal> temp = new ArrayList<Goal>();

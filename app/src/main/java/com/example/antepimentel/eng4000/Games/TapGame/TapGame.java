@@ -7,9 +7,7 @@ import android.graphics.Paint;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.example.antepimentel.eng4000.Goals.Helper;
-
-import java.util.ArrayList;
+import com.example.antepimentel.eng4000.Helper;
 
 /**
  * Created by Ante Pimentel on 1/20/2018.

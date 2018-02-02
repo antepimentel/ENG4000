@@ -1,8 +1,7 @@
 package com.example.antepimentel.eng4000;
-import android.os.Parcel;
-import android.os.Parcelable;
 import com.example.antepimentel.eng4000.Goals.Goal;
-import com.example.antepimentel.eng4000.Goals.Helper;
+import com.example.antepimentel.eng4000.Items.Item;
+
 import java.util.ArrayList;
 
 /**
@@ -16,6 +15,7 @@ public class Model{
     public static int points = 0;
     public static int numCompletedGoals= 0;
     public static String pinNumber = "0000";
+    public static ArrayList<Item> items = new ArrayList<Item>();
 
 //========= METHODS =========//
 
@@ -27,6 +27,7 @@ public class Model{
         // Load fake data for now
         //this.goals = Helper.loadGoals();
         sGoals = Helper.loadGoals();
+        items = Helper.loadItems();
         isInitialized = true;
     }
 
@@ -74,6 +75,34 @@ public class Model{
         resetGoals();
     }
 
+    public static int getTotalItemWeight(){
+        int total = 0;
+        for(int i = 0; i < items.size(); i++){
+            total = total + items.get(i).getWeight();
+        }
+        return total;
+    }
+    private static int randomIntWithinRange(){
+        int total = getTotalItemWeight();
+        return (int)(Math.random() * total) + 1;
+    }
+
+    public static int getRandomItem(){
+        int target = randomIntWithinRange();
+        int counter = 0;
+        int i, j;
+
+        for(i = 0; i < items.size(); i++){
+            for(j = 0; j < items.get(i).getWeight(); j++){
+                if(counter == target){
+                    return i;
+                } else {
+                    counter++;
+                }
+            }
+        }
+        return -1;
+    }
 //========= GETTERS AND SETTERS =========//
 
 

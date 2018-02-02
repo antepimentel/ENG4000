@@ -29,7 +29,8 @@
         <activity
             android:name=".Submit"
             android:label="@string/title_activity_submit" />
-        <activity android:name=".Goals.Submit"></activity>
+        <activity android:name=".Goals.Submit" />
+        <activity android:name=".Items.ItemView"></activity>
     </application>
 
 </manifest>

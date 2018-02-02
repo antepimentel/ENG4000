@@ -5,9 +5,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.antepimentel.eng4000.Games.GamesView;
 import com.example.antepimentel.eng4000.Goals.GoalView;
+import com.example.antepimentel.eng4000.Items.ItemView;
 
 public class MainMenu extends AppCompatActivity {
 
@@ -22,7 +24,7 @@ public class MainMenu extends AppCompatActivity {
         if(!Model.isInitialized){
             Model.loadData();
             System.out.println("==== Model data loaded ====");
-            System.out.println(Model.print());
+            //System.out.println(Model.print());
         }
 
         // Goals
@@ -49,16 +51,29 @@ public class MainMenu extends AppCompatActivity {
         Button b3 = (Button) findViewById(R.id.button3);
         b3.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
+                System.out.println("GOT HERE");
                 Intent intent = new Intent(MainMenu.this, StatsView.class);
                 startActivity(intent);
             }
         });
 
-        // Settings
+        // Shop
         Button b4 = (Button) findViewById(R.id.button4);
         b4.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
-                //Do stuff here
+                System.out.println("GOT HERE");
+                Intent intent = new Intent(MainMenu.this, ItemView.class);
+                startActivity(intent);
+            }
+        });
+
+        // Settings
+        Button b5 = (Button) findViewById(R.id.button5);
+        b5.setOnClickListener(new Button.OnClickListener() {
+            public void onClick(View v) {
+                int item = Model.getRandomItem();
+                Toast.makeText(getApplicationContext(), "You got: "+ Model.items.get(item).getName(), Toast.LENGTH_SHORT).show();
+                Model.items.get(item).setObtained(true);
             }
         });
     }

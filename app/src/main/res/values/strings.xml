@@ -9,6 +9,7 @@
     <string name="trophies_title">Trophies</string>
     <string name="games_title">Games</string>
     <string name="title_activity_submit">Submit</string>
+    <string name="items_title">Items</string>
 
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>

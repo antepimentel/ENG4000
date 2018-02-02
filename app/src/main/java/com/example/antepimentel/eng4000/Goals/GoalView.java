@@ -3,7 +3,6 @@ package com.example.antepimentel.eng4000.Goals;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -12,8 +11,6 @@ import android.widget.Toast;
 
 import com.example.antepimentel.eng4000.Model;
 import com.example.antepimentel.eng4000.R;
-
-import java.util.ArrayList;
 
 public class GoalView extends AppCompatActivity {
 
@@ -45,8 +42,6 @@ public class GoalView extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item){
         int res_id = item.getItemId();
         if(res_id == R.id.goal_submit){
-            //do stuff
-
 
             Intent intent = new Intent(GoalView.this, Submit.class);
             startActivityForResult(intent, 1);
@@ -63,7 +58,7 @@ public class GoalView extends AppCompatActivity {
             System.out.println("Got Result!");
             int total = Model.getTotalScore();
             Model.submitGoals();
-            Toast.makeText(getApplicationContext(), "Goals Submitted. New Score: " + Model.points, Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Goals Submitted. New Score: " + Model.getPointBalance(), Toast.LENGTH_SHORT).show();
         }
     }
 }

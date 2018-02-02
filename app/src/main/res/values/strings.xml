@@ -1,15 +1,18 @@
 <resources>
     <string name="app_name">ENG 4000</string>
     <string name="menu_title">Main Menu</string>
-    <string name="my_goals">Goals</string>
+    <string name="my_goals">Challenges</string>
     <string name="settings_title">Settings</string>
     <string name="tips_title">Tips</string>
     <string name="stats_title">Stats</string>
-    <string name="shop_title">Shop</string>
+    <string name="shop_title">Items</string>
     <string name="trophies_title">Trophies</string>
     <string name="games_title">Games</string>
     <string name="title_activity_submit">Submit</string>
     <string name="items_title">Items</string>
+    <string name="quiz_title">Quiz</string>
+    <string name="new_item">New Item</string>
+
 
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>

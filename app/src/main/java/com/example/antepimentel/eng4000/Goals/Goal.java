@@ -11,6 +11,10 @@ import android.os.Parcelable;
 
 public class Goal implements Parcelable{
 
+    public static final int TYPE_WATER = 0;
+    public static final int TYPE_ELEC = 1;
+    public static final int TYPE_GAS = 3;
+
     private String TITLE;
     private int VALUE;
     private int ID;

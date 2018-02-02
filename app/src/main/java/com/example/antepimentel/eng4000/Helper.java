@@ -2,6 +2,8 @@ package com.example.antepimentel.eng4000;
 
 import android.content.res.Resources;
 import android.util.DisplayMetrics;
+import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.example.antepimentel.eng4000.Goals.Goal;
 import com.example.antepimentel.eng4000.Items.Item;
@@ -15,6 +17,9 @@ import java.util.ArrayList;
  */
 
 public class Helper {
+
+    private static int buttonHeight = getScreenHeight()/10;
+    private static int buttonWidth = (getScreenWidth()/2) - (getScreenWidth()/15);
 
     public static ArrayList<Item> loadItems(){
         ArrayList<Item> temp = new ArrayList<Item>();
@@ -72,5 +77,12 @@ public class Helper {
 
     public static int getScreenHeight() {
         return Resources.getSystem().getDisplayMetrics().heightPixels;
+    }
+
+    public static void setButtonSize(Button b){
+        ViewGroup.LayoutParams params = b.getLayoutParams();
+        params.width = buttonWidth;
+        params.height = buttonHeight;
+        b.setLayoutParams(params);
     }
 }

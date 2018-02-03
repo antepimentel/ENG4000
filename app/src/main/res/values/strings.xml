@@ -1,9 +1,9 @@
 <resources>
-    <string name="app_name">ENG 4000</string>
+    <string name="app_name">TRR</string>
+
     <string name="menu_title">Main Menu</string>
     <string name="my_goals">Challenges</string>
     <string name="settings_title">Settings</string>
-    <string name="tips_title">Tips</string>
     <string name="stats_title">Stats</string>
     <string name="shop_title">Items</string>
     <string name="trophies_title">Trophies</string>

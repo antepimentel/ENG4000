@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.antepimentel.eng4000.Model;
@@ -36,15 +37,32 @@ public class GoalAdapter extends ArrayAdapter<Goal>{
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.goal_layout, parent, false);
         }
 
+        ImageView icon = (ImageView)convertView.findViewById(R.id.imageView);
         TextView title = (TextView)convertView.findViewById(R.id.title_view);
         TextView points = (TextView)convertView.findViewById(R.id.points_view);
         CheckBox cb = (CheckBox)convertView.findViewById(R.id.checkBox);
 
-        //Get actual goal
-        //int index = Model.sGoals.indexOf(goal);
-        //System.out.println(index);
+        final int index = position; // This isn't really needed
 
-        final int index = position;
+        // Set the proper icon for the goal type
+        switch(Model.sGoals.get(index).getID()){
+
+            case Goal.TYPE_ELEC:
+                icon.setImageResource(R.mipmap.lightning2);
+                break;
+
+            case Goal.TYPE_WATER:
+                icon.setImageResource(R.mipmap.water_colour);
+                break;
+
+            case Goal.TYPE_GAS:
+                // No icon for this
+                break;
+
+            default:
+                break;
+        }
+
 
         cb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 

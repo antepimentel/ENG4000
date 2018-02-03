@@ -47,26 +47,26 @@ public class Helper {
 
         int i = 0;
 
-        temp.add(new Goal("Test1", 100, 0));
-        temp.add(new Goal("Test2", 100, 1));
-        temp.add(new Goal("Test3", 100, 2));
-        temp.add(new Goal("Test4", 100, 3));
-        temp.add(new Goal("Test5", 100, 4));
-        temp.add(new Goal("Test"+i, 100, i++));
-        temp.add(new Goal("Test"+i, 100, i++));
-        temp.add(new Goal("Test"+i, 100, i++));
-        temp.add(new Goal("Test"+i, 100, i++));
-        temp.add(new Goal("Test"+i, 100, i++));
-        temp.add(new Goal("Test"+i, 100, i++));
-        temp.add(new Goal("Test"+i, 100, i++));
-        temp.add(new Goal("Test"+i, 100, i++));
-        temp.add(new Goal("Test"+i, 100, i++));
-        temp.add(new Goal("Test"+i, 100, i++));
-        temp.add(new Goal("Test"+i, 100, i++));
-        temp.add(new Goal("Test"+i, 100, i++));
-        temp.add(new Goal("Test"+i, 100, i++));
-        temp.add(new Goal("Test"+i, 100, i++));
-        temp.add(new Goal("Test"+i, 100, i++));
+        temp.add(new Goal("Test1", 100, Goal.TYPE_ELEC));
+        temp.add(new Goal("Test2", 100, Goal.TYPE_WATER));
+        temp.add(new Goal("Test3", 100, Goal.TYPE_ELEC));
+        temp.add(new Goal("Test4", 100, Goal.TYPE_ELEC));
+        temp.add(new Goal("Test5", 100, Goal.TYPE_WATER));
+        temp.add(new Goal("Test"+i, 100, Goal.TYPE_ELEC));
+        temp.add(new Goal("Test"+i, 100, Goal.TYPE_WATER));
+        temp.add(new Goal("Test"+i, 100, Goal.TYPE_WATER));
+        temp.add(new Goal("Test"+i, 100, Goal.TYPE_ELEC));
+        temp.add(new Goal("Test"+i, 100, Goal.TYPE_WATER));
+        temp.add(new Goal("Test"+i, 100, Goal.TYPE_ELEC));
+        temp.add(new Goal("Test"+i, 100, Goal.TYPE_WATER));
+        temp.add(new Goal("Test"+i, 100, Goal.TYPE_ELEC));
+        temp.add(new Goal("Test"+i, 100, Goal.TYPE_WATER));
+        temp.add(new Goal("Test"+i, 100, Goal.TYPE_WATER));
+        temp.add(new Goal("Test"+i, 100, Goal.TYPE_ELEC));
+        temp.add(new Goal("Test"+i, 100, Goal.TYPE_ELEC));
+        temp.add(new Goal("Test"+i, 100, Goal.TYPE_ELEC));
+        temp.add(new Goal("Test"+i, 100, Goal.TYPE_WATER));
+        temp.add(new Goal("Test"+i, 100, Goal.TYPE_WATER));
 
         return temp;
     }

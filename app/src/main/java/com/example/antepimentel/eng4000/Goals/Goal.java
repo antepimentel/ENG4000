@@ -17,13 +17,13 @@ public class Goal implements Parcelable{
 
     private String TITLE;
     private int VALUE;
-    private int ID;
+    private int TYPE;
     private boolean COMPLETE;
 
-    public Goal(String title, int value, int id){
+    public Goal(String title, int value, int type){
         this.TITLE = title;
         this.VALUE = value;
-        this.ID = id;
+        this.TYPE = type;
         this.COMPLETE = false;
     }
 
@@ -42,7 +42,7 @@ public class Goal implements Parcelable{
 
         TITLE = in.readString();
         VALUE = in.readInt();
-        ID = in.readInt();
+        TYPE = in.readInt();
         COMPLETE = in.readByte() != 0;
     }
 
@@ -67,7 +67,7 @@ public class Goal implements Parcelable{
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(TITLE);
         dest.writeInt(VALUE);
-        dest.writeInt(ID);
+        dest.writeInt(TYPE);
         dest.writeByte((byte) (COMPLETE ? 1 : 0));
     }
 
@@ -90,11 +90,11 @@ public class Goal implements Parcelable{
     }
 
     public int getID() {
-        return ID;
+        return TYPE;
     }
 
     public void setID(int ID) {
-        this.ID = ID;
+        this.TYPE = ID;
     }
 
     public boolean isCOMPLETE() {

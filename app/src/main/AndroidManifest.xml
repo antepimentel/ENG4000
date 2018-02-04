@@ -30,10 +30,10 @@
             android:theme="@android:style/Theme.Black.NoTitleBar" />
         <activity
             android:name=".Submit"
-            android:label="@string/title_activity_submit"
-            />
+            android:label="@string/title_activity_submit" />
         <activity android:name=".Goals.Submit" />
-        <activity android:name=".Items.ItemView"></activity>
+        <activity android:name=".Items.ItemView" />
+        <activity android:name=".Quiz.QuizView"></activity>
     </application>
 
 </manifest>

@@ -14,8 +14,12 @@ public class StatsView extends AppCompatActivity {
 
         TextView tv_numGoals = (TextView)findViewById(R.id.tv_numGoals);
         TextView  tv_score = (TextView)findViewById(R.id.tv_score);
+        TextView  tv_weeklyScore = (TextView)findViewById(R.id.tv_weeklyscore);
+        TextView  tv_lifetimescore = (TextView)findViewById(R.id.tv_lifetimescore);
 
         tv_numGoals.setText("Completed Goals: " + Integer.toString(Model.numCompletedGoals));
         tv_score.setText("Total Score: " + Integer.toString(Model.getPointBalance()));
+        tv_weeklyScore.setText("Weekly Score: " + Model.getWeeklyPoints());
+        tv_lifetimescore.setText("Lifetime Score: " + Model.getLifetimePoints());
     }
 }

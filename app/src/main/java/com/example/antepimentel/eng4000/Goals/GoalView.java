@@ -59,6 +59,7 @@ public class GoalView extends AppCompatActivity {
             int total = Model.getTotalScore();
             Model.submitGoals();
             Toast.makeText(getApplicationContext(), "Goals Submitted. New Score: " + Model.getPointBalance(), Toast.LENGTH_SHORT).show();
+            finish();
         }
     }
 }

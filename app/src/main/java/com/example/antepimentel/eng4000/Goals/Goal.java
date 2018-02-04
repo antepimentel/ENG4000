@@ -3,6 +3,8 @@ package com.example.antepimentel.eng4000.Goals;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.security.MessageDigest;
+
 /**
  * Created by Ante Pimentel on 11/20/2017.
  *
@@ -14,6 +16,11 @@ public class Goal implements Parcelable{
     public static final int TYPE_WATER = 0;
     public static final int TYPE_ELEC = 1;
     public static final int TYPE_GAS = 3;
+    public static final int TYPE_GREEN = 4;
+
+    public static final int POINT_SMALL = 5;
+    public static final int POINT_MED = 10;
+    public static final int POINT_LRG = 15;
 
     private String TITLE;
     private int VALUE;

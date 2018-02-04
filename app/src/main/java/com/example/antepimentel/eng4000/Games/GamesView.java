@@ -2,15 +2,19 @@ package com.example.antepimentel.eng4000.Games;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.antepimentel.eng4000.Games.TapGame.TapGame;
 import com.example.antepimentel.eng4000.Games.TapGame.TapGameViewLauncher;
+import com.example.antepimentel.eng4000.Helper;
+import com.example.antepimentel.eng4000.Model;
 import com.example.antepimentel.eng4000.R;
 
 public class GamesView extends AppCompatActivity {
@@ -23,33 +27,70 @@ public class GamesView extends AppCompatActivity {
         setContentView(R.layout.activity_games_view);
         getSupportActionBar().setTitle(getString(R.string.games_title));
 
-        Button b = (Button)findViewById(R.id.button);
-        b.setOnClickListener(new Button.OnClickListener() {
+        Button b1 = (Button)findViewById(R.id.button);
+        Helper.setButtonSize(b1);
+        b1.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
-//                TapGame tgView = new TapGame(getBaseContext(), getWindow().getDecorView().getMeasuredWidth(), getWindow().getDecorView().getMeasuredHeight());
-//                setContentView(tgView);
-//                getWindow().getDecorView().setBackgroundColor(Color.rgb(239,239,239));
-                Intent intent = new Intent(GamesView.this, TapGameViewLauncher.class);
-                startActivity(intent);
+                //Intent intent = new Intent(GamesView.this, TapGameViewLauncher.class);
+                //startActivity(intent);
+                Intent game1 = new Intent(Intent.ACTION_VIEW);
+                game1.setData(Uri.parse("market://details?id="+Helper.game1));
+                startActivity(game1);
             }
         });
-    }
 
+        Button b2 = (Button)findViewById(R.id.button8);
+        Helper.setButtonSize(b2);
+        b2.setOnClickListener(new Button.OnClickListener() {
+            public void onClick(View v) {
+                //Intent intent = new Intent(GamesView.this, TapGameViewLauncher.class);
+                //startActivity(intent);
+                Intent game1 = new Intent(Intent.ACTION_VIEW);
+                game1.setData(Uri.parse("market://details?id="+Helper.game2));
+                startActivity(game1);
+            }
+        });
 
+        Button b3 = (Button)findViewById(R.id.button9);
+        Helper.setButtonSize(b3);
+        b3.setOnClickListener(new Button.OnClickListener() {
+            public void onClick(View v) {
+                //Intent intent = new Intent(GamesView.this, TapGameViewLauncher.class);
+                //startActivity(intent);
+                Intent game1 = new Intent(Intent.ACTION_VIEW);
+                game1.setData(Uri.parse("market://details?id="+Helper.game3));
+                startActivity(game1);
+            }
+        });
 
-    public static void hideSystemUI(View decorView) {
-        // Set the content to appear under the system bars so that the content
-        // doesn't resize when the system bars hide and show.
-        decorView.setSystemUiVisibility(
-                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                        | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION // hide nav bar
-                        | View.SYSTEM_UI_FLAG_FULLSCREEN // hide status bar
-                        | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
-    }
+        b1.setEnabled(false);
+        b2.setEnabled(false);
+        b3.setEnabled(false);
 
-    public static void keepScreenOn(Window window) {
-        window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON); // don't dim screen
+        TextView v1 = (TextView)findViewById(R.id.textView2);
+        TextView v2 = (TextView)findViewById(R.id.textView3);
+        TextView v3 = (TextView)findViewById(R.id.textView4);
+
+        v1.setText("Unlocked at 100 points");
+        v2.setText("Unlocked at 200 points");
+        v3.setText("Unlocked at 300 points");
+
+        if(Model.getLifetimePoints() > 100){
+            b1.setEnabled(true);
+            b1.setText("Fruit Ninja");
+            v1.setText("Unlocked!");
+        }
+
+        if(Model.getLifetimePoints() > 200){
+            b2.setEnabled(true);
+            b2.setText("Flip Diving");
+            v2.setText("Unlocked!");
+        }
+
+        if(Model.getLifetimePoints() > 300){
+            b3.setEnabled(true);
+            b1.setText("Roll the Ball");
+            v1.setText("Unlocked!");
+        }
     }
 }

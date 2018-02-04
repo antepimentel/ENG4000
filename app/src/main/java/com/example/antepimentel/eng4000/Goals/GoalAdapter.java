@@ -48,15 +48,19 @@ public class GoalAdapter extends ArrayAdapter<Goal>{
         switch(Model.sGoals.get(index).getID()){
 
             case Goal.TYPE_ELEC:
-                icon.setImageResource(R.mipmap.lightning2);
+                icon.setImageResource(R.mipmap.electrical_plug);
                 break;
 
             case Goal.TYPE_WATER:
-                icon.setImageResource(R.mipmap.water_colour);
+                icon.setImageResource(R.mipmap.water);
                 break;
 
             case Goal.TYPE_GAS:
-                // No icon for this
+                // No icon for this?
+                break;
+
+            case Goal.TYPE_GREEN:
+                icon.setImageResource(R.mipmap.leaf);
                 break;
 
             default:

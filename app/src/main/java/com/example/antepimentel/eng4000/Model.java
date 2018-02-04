@@ -7,6 +7,7 @@ import com.example.antepimentel.eng4000.Items.Item;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created by Ante Pimentel on 11/21/2017.
@@ -16,13 +17,19 @@ public class Model{
 
     //==== UNSAVED SYSTEM VALUES ====//
     public static boolean isInitialized = false;
-    public static int itemCost = 1000;
+    public static int itemCost = 100;
 
     //==== SAVED VALUES ====//
     // Stats
-    private static int pointBalance = 0;
     public static int numCompletedGoals= 0;
     private static int lifetimePoints = 0;
+    private static int pointBalance = 0;
+
+    // Weekly Values
+    private static Date weekStartDate = new Date();
+    private static int weeklyPoints = 0;
+    private static boolean isQuizCompleted = false;
+    private static int quizID = 0;
 
     // Settings
     public static String pinNumber = "0000";
@@ -31,31 +38,29 @@ public class Model{
     public static ArrayList<Item> items = new ArrayList<Item>();
     public static ArrayList<Goal> sGoals = new ArrayList<Goal>();
 
-
     //========= METHODS =========//
     public void initialize(){
-        // Does nothing so far
+        // Load saved data
+
+    }
+
+    public static void weeklyReset(){
+        weeklyPoints = 0;
+        weekStartDate = new Date();
+        isQuizCompleted = false;
+        quizID++;
     }
 
     public static void loadData(){
-        // Load fake data for now
-        //this.goals = Helper.loadGoals();
         sGoals = Helper.loadGoals();
         items = Helper.loadItems();
         isInitialized = true;
     }
 
-    public static int getPointBalance(){
-        return pointBalance;
-    }
-
-    public static int getLifetimePoints(){
-        return lifetimePoints;
-    }
-
     public static void addPoints(int p){
         lifetimePoints = lifetimePoints + p;
         pointBalance = pointBalance + p;
+        weeklyPoints = weeklyPoints + p;
     }
 
     public static void subtractPoints(int p) throws NotEnoughPointsException{
@@ -147,6 +152,26 @@ public class Model{
         //TODO
         File dir = context.getFilesDir();
 
+    }
 
+    // GETTERS AND SETTERS
+    public static int getPointBalance(){
+        return pointBalance;
+    }
+
+    public static int getLifetimePoints(){
+        return lifetimePoints;
+    }
+
+    public static int getWeeklyPoints(){
+        return weeklyPoints;
+    }
+
+    public static int getQuizID(){
+        return quizID;
+    }
+
+    public static Date getWeekStartDate(){
+        return weekStartDate;
     }
 }

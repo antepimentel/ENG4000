@@ -13,6 +13,8 @@
     <string name="quiz_title">Quiz</string>
     <string name="new_item">New Item</string>
 
+    <string name="button_locked">Locked</string>
+
 
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>

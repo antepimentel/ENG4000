@@ -14,6 +14,7 @@ import com.example.antepimentel.eng4000.Exceptions.NotEnoughPointsException;
 import com.example.antepimentel.eng4000.Games.GamesView;
 import com.example.antepimentel.eng4000.Goals.GoalView;
 import com.example.antepimentel.eng4000.Items.ItemView;
+import com.example.antepimentel.eng4000.Quiz.QuizView;
 
 public class MainMenu extends AppCompatActivity {
 
@@ -94,13 +95,15 @@ public class MainMenu extends AppCompatActivity {
         Helper.setButtonSize(b6);
         b6.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
-
+                Intent intent = new Intent(MainMenu.this, QuizView.class);
+                startActivity(intent);
             }
         });
 
         // New Item
         Button b7 = (Button) findViewById(R.id.button7);
         Helper.setButtonSize(b7);
+        b7.setText(getString(R.string.new_item) + "(" + Model.itemCost + ")");
         b7.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
                 String message = "";

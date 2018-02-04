@@ -54,6 +54,7 @@
 
     <Button
         android:id="@+id/button3"
+        android:drawableLeft="@drawable/stats"
         android:layout_width="175dp"
         android:layout_height="60dp"
         android:layout_marginEnd="14dp"

@@ -14,6 +14,7 @@ import java.util.ArrayList;
 /**
  * Created by Ante Pimentel on 11/20/2017.
  *
+ *
  * Just a utility class
  */
 
@@ -29,20 +30,35 @@ public class Helper {
     public static ArrayList<Item> loadItems(){
         ArrayList<Item> temp = new ArrayList<Item>();
 
-        temp.add(new Item("Wizard Hat", true, 5));
-        temp.add(new Item("Mittens", false, 5));
-        temp.add(new Item("Birthday Hat", false, 5));
-        temp.add(new Item("Tuxedo", true, 5));
-        temp.add(new Item("Polka-dot Tie", false, 5));
-        temp.add(new Item("Bow Tie", false, 1));
-        temp.add(new Item("Snorkel and Goggles", false, 5));
-        temp.add(new Item("Sombrero", true, 5));
-        temp.add(new Item("Wizard Hat", false, 5));
-        temp.add(new Item("Wizard Hat", false, 5));
-        temp.add(new Item("Wizard Hat", false, 5));
-        temp.add(new Item("Wizard Hat", false, 5));
-        temp.add(new Item("Wizard Hat", false, 5));
-        temp.add(new Item("Wizard Hat", false, 5));
+        //FACE
+        temp.add(new Item("Glasses", R.mipmap.glasses1, false, Item.TYPE_FACE, 5));
+        temp.add(new Item("3D Specs", R.mipmap.glasses2, false, Item.TYPE_FACE, 5));
+        temp.add(new Item("Monocle", R.mipmap.monocle, false, Item.TYPE_FACE,5));
+
+        //HEAD
+        temp.add(new Item("Cowboy Hat", R.mipmap.hat, false, Item.TYPE_HEAD,5));
+        temp.add(new Item("Winter Hat", R.mipmap.winterhat, false, Item.TYPE_HEAD,5));
+        temp.add(new Item("Sailor Hat", R.mipmap.sailorhat, false, Item.TYPE_HEAD,5));
+
+        //NECK
+        temp.add(new Item("Fancy Tie", R.mipmap.fancytie, false, Item.TYPE_NECK,5));
+        temp.add(new Item("Winter Scarf", R.mipmap.scarf,false, Item.TYPE_NECK,5));
+        temp.add(new Item("Fashionable Scarf", R.mipmap.fashionablescarf,false, Item.TYPE_NECK,5));
+
+        //TORSO
+        temp.add(new Item("Winter Coat", R.mipmap.wintercoat,false, Item.TYPE_TORSO,5));
+        temp.add(new Item("Suit", R.mipmap.suit,false, Item.TYPE_TORSO,5));
+        temp.add(new Item("Varsity Coat", R.mipmap.varsitycoat,false, Item.TYPE_TORSO,5));
+
+        //HANDS
+        temp.add(new Item("Boxing Gloves", R.mipmap.boxinggloves, false, Item.TYPE_HANDS,5));
+        temp.add(new Item("Goalie Gloves", R.mipmap.goaliegloves, false, Item.TYPE_HANDS,5));
+        temp.add(new Item("Cozy Mittens", R.mipmap.mittens, false, Item.TYPE_HANDS,5));
+
+        //FEET
+        temp.add(new Item("Snow Shoes", R.mipmap.snowshoes,false, Item.TYPE_FEET,5));
+        temp.add(new Item("Cowboy Boots", R.mipmap.cowboyboots,false, Item.TYPE_FEET,5));
+        temp.add(new Item("Sneakers", R.mipmap.sneakers,false, Item.TYPE_FEET,5));
 
         return temp;
     }

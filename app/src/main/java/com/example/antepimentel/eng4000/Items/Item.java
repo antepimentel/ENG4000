@@ -6,16 +6,26 @@ package com.example.antepimentel.eng4000.Items;
 
 public class Item {
 
+    public static final int TYPE_HEAD = 0;
+    public static final int TYPE_FACE = 1;
+    public static final int TYPE_NECK = 2;
+    public static final int TYPE_TORSO = 3;
+    public static final int TYPE_HANDS = 4;
+    public static final int TYPE_FEET = 5;
+
     private boolean isObtained;
     private String name;
+    private int type;
     private int weight;
-    private String icon;
+    private int icon;
     private String obtainedOn;
 
-    public Item(String n, boolean obtained, int w){
+    public Item(String n, int ic, boolean obtained, int t, int w){
         this.isObtained = obtained;
+        this.icon = ic;
         this.name = n;
         this.weight = w;
+        this.type = t;
     }
 
     public boolean isObtained() {
@@ -30,10 +40,6 @@ public class Item {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public int getWeight() {
         return weight;
     }
@@ -42,12 +48,12 @@ public class Item {
         this.weight = dropChance;
     }
 
-    public String getIcon() {
+    public int getIcon() {
         return icon;
     }
 
-    public void setIcon(String icon) {
-        this.icon = icon;
+    public int getType(){
+        return this.type;
     }
 
     public String getObtainedOn() {

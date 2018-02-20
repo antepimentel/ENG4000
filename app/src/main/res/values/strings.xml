@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TRR</string>
+    <string name="app_name">Test Review</string>
 
     <string name="menu_title">Main Menu</string>
     <string name="my_goals">Challenges</string>
@@ -12,6 +12,7 @@
     <string name="items_title">Items</string>
     <string name="quiz_title">Quiz</string>
     <string name="new_item">New Item</string>
+    <string name="character">Pengu</string>
 
     <string name="button_locked">Locked</string>
 

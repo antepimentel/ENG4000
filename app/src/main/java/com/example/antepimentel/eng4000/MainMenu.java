@@ -121,6 +121,16 @@ public class MainMenu extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
             }
         });
+
+        // Char
+        Button b8 = (Button) findViewById(R.id.button8);
+        Helper.setButtonSize(b8);
+        b8.setOnClickListener(new Button.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(MainMenu.this, CharacterView.class);
+                startActivity(intent);
+            }
+        });
     }
 
 }

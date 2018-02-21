@@ -13,6 +13,7 @@ public class QuizQuestion {
     private int answer;
     private int selected;
 
+    //This is a test of git
 
     public boolean isCorrect(){
         System.out.println("Checking answer: Correct = " +answer+", Selected = " + selected );

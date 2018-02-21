@@ -36,9 +36,17 @@ public class ItemView extends AppCompatActivity {
                 Item itemSelected = Model.items.get(posSelected);
 
                 if(itemSelected.isObtained()){
-                    Model.getSlots().put(itemSelected.getType(), itemSelected.getImage());
-                    Toast.makeText(getApplicationContext(), itemSelected.getName()+" has been equip", Toast.LENGTH_SHORT).show();
+                    if(itemSelected.getImage() == Model.getSlots().get(itemSelected.getType())){
+                        // Item is already equip
+                        Model.getSlots().put(itemSelected.getType(), -1);
+                        Toast.makeText(getApplicationContext(), itemSelected.getName()+" has been removed", Toast.LENGTH_SHORT).show();
+                    } else {
+                        // Item is owned, users wants to equip
+                        Model.getSlots().put(itemSelected.getType(), itemSelected.getImage());
+                        Toast.makeText(getApplicationContext(), itemSelected.getName()+" has been equip", Toast.LENGTH_SHORT).show();
+                    }
                 } else {
+                    // Do not own item
                     Toast.makeText(getApplicationContext(), "You do not own this item", Toast.LENGTH_SHORT).show();
                 }
             }

@@ -18,14 +18,17 @@ public class Item {
     private int type;
     private int weight;
     private int icon;
+    private int image;
     private String obtainedOn;
 
-    public Item(String n, int ic, boolean obtained, int t, int w){
+    public Item(String n, int ic, int im, boolean obtained, int t, int w){
         this.isObtained = obtained;
         this.icon = ic;
+        this.image = im;
         this.name = n;
         this.weight = w;
         this.type = t;
+
     }
 
     public boolean isObtained() {
@@ -63,4 +66,9 @@ public class Item {
     public void setObtainedOn(String obtainedOn) {
         this.obtainedOn = obtainedOn;
     }
+
+    public int getImage() {
+        return image;
+    }
+
 }

@@ -1,13 +1,14 @@
 package com.example.antepimentel.eng4000;
-import android.content.Context;
 
 import com.example.antepimentel.eng4000.Exceptions.NotEnoughPointsException;
 import com.example.antepimentel.eng4000.Goals.Goal;
 import com.example.antepimentel.eng4000.Items.Item;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 
 /**
  * Created by Ante Pimentel on 11/21/2017.
@@ -21,9 +22,9 @@ public class Model{
 
     //==== SAVED VALUES ====//
     // Stats
-    public static int numCompletedGoals= 0;
+    private static int lifetimeCompletedGoals = 0;
     private static int lifetimePoints = 0;
-    private static int pointBalance = 0;
+    private static int pointBalance = 1000;
 
     // Weekly Values
     private static Date weekStartDate = new Date();
@@ -38,10 +39,27 @@ public class Model{
     public static ArrayList<Item> items = new ArrayList<Item>();
     public static ArrayList<Goal> sGoals = new ArrayList<Goal>();
 
-    //========= METHODS =========//
-    public void initialize(){
-        // Load saved data
+    // Equip Items
+    private static HashMap<Integer, Integer> slots = new HashMap<Integer, Integer>();
 
+    //========= METHODS =========//
+    public static void initialize(File dir){
+        // Load saved data
+        loadData();
+
+        try {
+            SavedDataHandler.loadData(dir);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            SavedDataHandler.createFiles(dir);
+        } catch (Exception e){
+            e.printStackTrace();
+            SavedDataHandler.clearData(dir);
+        }
+    }
+
+    public static void saveData(File dir){
+        SavedDataHandler.saveData(dir);
     }
 
     public static void weeklyReset(){
@@ -54,6 +72,14 @@ public class Model{
     public static void loadData(){
         sGoals = Helper.loadGoals();
         items = Helper.loadItems();
+
+        slots.put(Item.TYPE_FACE, -1);
+        slots.put(Item.TYPE_HEAD, -1);
+        slots.put(Item.TYPE_NECK, -1);
+        slots.put(Item.TYPE_TORSO, -1);
+        slots.put(Item.TYPE_FEET, -1);
+        slots.put(Item.TYPE_HANDS, -1);
+
         isInitialized = true;
     }
 
@@ -109,7 +135,7 @@ public class Model{
     }
 
     public static void submitGoals(){
-        numCompletedGoals += getNumCompletedGoals();
+        lifetimeCompletedGoals += getNumCompletedGoals();
         addPoints(getTotalScore());
         resetGoals();
     }
@@ -144,16 +170,6 @@ public class Model{
         return -1;
     }
 
-    public void loadSavedData(){
-        //TODO
-    }
-
-    public void saveData(Context context){
-        //TODO
-        File dir = context.getFilesDir();
-
-    }
-
     // GETTERS AND SETTERS
     public static int getPointBalance(){
         return pointBalance;
@@ -173,5 +189,41 @@ public class Model{
 
     public static Date getWeekStartDate(){
         return weekStartDate;
+    }
+
+    public static HashMap<Integer, Integer> getSlots() {
+        return slots;
+    }
+
+    public static boolean isQuizCompleted() {
+        return isQuizCompleted;
+    }
+
+    public static void setIsQuizCompleted(boolean isQuizCompleted) {
+        Model.isQuizCompleted = isQuizCompleted;
+    }
+
+    public static void setLifetimeCompletedGoals(int lifetimeCompletedGoals) {
+        Model.lifetimeCompletedGoals = lifetimeCompletedGoals;
+    }
+
+    public static void setLifetimePoints(int lifetimePoints) {
+        Model.lifetimePoints = lifetimePoints;
+    }
+
+    public static void setPointBalance(int pointBalance) {
+        Model.pointBalance = pointBalance;
+    }
+
+    public static void setWeeklyPoints(int weeklyPoints) {
+        Model.weeklyPoints = weeklyPoints;
+    }
+
+    public static void setQuizID(int quizID) {
+        Model.quizID = quizID;
+    }
+
+    public static int getLifetimeCompletedGoals() {
+        return lifetimeCompletedGoals;
     }
 }

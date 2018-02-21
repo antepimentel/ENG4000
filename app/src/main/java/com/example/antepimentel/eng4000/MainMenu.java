@@ -32,7 +32,7 @@ public class MainMenu extends AppCompatActivity {
 
         // Initialize model
         if(!Model.isInitialized){
-            Model.loadData();
+            Model.initialize(getFilesDir());
             System.out.println("==== Model data loaded ====");
             //System.out.println(Model.print());
         }
@@ -131,6 +131,12 @@ public class MainMenu extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    @Override
+    public void onDestroy(){
+        super.onDestroy();
+        Model.saveData(getFilesDir());
     }
 
 }

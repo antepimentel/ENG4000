@@ -44,12 +44,12 @@ public class QuizView extends AppCompatActivity {
         Date today = new Date();
 
         // DEBUG CODE: START
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        try {
-            today = sdf.parse("10/02/2018");
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+//        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+//        try {
+//            today = sdf.parse("10/02/2018");
+//        } catch (ParseException e) {
+//            e.printStackTrace();
+//        }
         // DEBUG CODE: END
 
         long todayInDays = TimeUnit.MILLISECONDS.toDays(today.getTime());
@@ -125,5 +125,11 @@ public class QuizView extends AppCompatActivity {
                 buttons.get(i).setVisibility(View.GONE);
             }
         }
+    }
+
+    @Override
+    public void onStop(){
+        super.onStop();
+        Model.saveData(getFilesDir());
     }
 }

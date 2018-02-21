@@ -62,4 +62,10 @@ public class GoalView extends AppCompatActivity {
             finish();
         }
     }
+
+    @Override
+    public void onStop(){
+        super.onStop();
+        Model.saveData(getFilesDir());
+    }
 }

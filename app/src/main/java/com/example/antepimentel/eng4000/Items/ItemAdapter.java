@@ -10,7 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.antepimentel.eng4000.Model;
+import com.example.antepimentel.eng4000.Data.Model;
 import com.example.antepimentel.eng4000.R;
 
 import java.util.ArrayList;

@@ -1,20 +1,16 @@
 package com.example.antepimentel.eng4000.Games;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.antepimentel.eng4000.Games.TapGame.TapGame;
-import com.example.antepimentel.eng4000.Games.TapGame.TapGameViewLauncher;
-import com.example.antepimentel.eng4000.Helper;
-import com.example.antepimentel.eng4000.Model;
+import com.example.antepimentel.eng4000.Data.Helper;
+import com.example.antepimentel.eng4000.Data.Model;
 import com.example.antepimentel.eng4000.R;
 
 public class GamesView extends AppCompatActivity {
@@ -89,8 +85,8 @@ public class GamesView extends AppCompatActivity {
 
         if(Model.getLifetimePoints() > 300){
             b3.setEnabled(true);
-            b1.setText("Roll the Ball");
-            v1.setText("Unlocked!");
+            b3.setText("Roll the Ball");
+            v3.setText("Unlocked!");
         }
     }
 }

@@ -7,7 +7,7 @@ import android.graphics.Paint;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.example.antepimentel.eng4000.Helper;
+import com.example.antepimentel.eng4000.Data.Helper;
 
 /**
  * Created by Ante Pimentel on 1/20/2018.

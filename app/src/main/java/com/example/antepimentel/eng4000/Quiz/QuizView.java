@@ -9,13 +9,10 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.antepimentel.eng4000.Helper;
-import com.example.antepimentel.eng4000.Model;
+import com.example.antepimentel.eng4000.Data.Helper;
+import com.example.antepimentel.eng4000.Data.Model;
 import com.example.antepimentel.eng4000.R;
 
-import java.sql.Time;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;

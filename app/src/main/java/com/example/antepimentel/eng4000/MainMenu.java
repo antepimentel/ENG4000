@@ -1,20 +1,21 @@
 package com.example.antepimentel.eng4000;
 
 import android.content.Intent;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.antepimentel.eng4000.Data.Helper;
+import com.example.antepimentel.eng4000.Data.Model;
 import com.example.antepimentel.eng4000.Exceptions.NotEnoughPointsException;
 import com.example.antepimentel.eng4000.Games.GamesView;
 import com.example.antepimentel.eng4000.Goals.GoalView;
 import com.example.antepimentel.eng4000.Items.ItemView;
 import com.example.antepimentel.eng4000.Quiz.QuizView;
+import com.example.antepimentel.eng4000.Settings.SettingsView;
 
 public class MainMenu extends AppCompatActivity {
 
@@ -64,18 +65,16 @@ public class MainMenu extends AppCompatActivity {
         Helper.setButtonSize(b3);
         b3.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
-                System.out.println("GOT HERE");
                 Intent intent = new Intent(MainMenu.this, StatsView.class);
                 startActivity(intent);
             }
         });
 
-        // Shop
+        // Items
         Button b4 = (Button) findViewById(R.id.button4);
         Helper.setButtonSize(b4);
         b4.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
-                System.out.println("GOT HERE");
                 Intent intent = new Intent(MainMenu.this, ItemView.class);
                 startActivity(intent);
             }
@@ -86,7 +85,8 @@ public class MainMenu extends AppCompatActivity {
 
         b5.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
-
+                Intent intent = new Intent(MainMenu.this, SettingsView.class);
+                startActivity(intent);
             }
         });
 
@@ -113,6 +113,7 @@ public class MainMenu extends AppCompatActivity {
                     int item = Model.getRandomItem();
                     Model.items.get(item).setObtained(true);
                     message = "You got: "+ Model.items.get(item).getName();
+                    Model.saveData(getFilesDir());
 
                 } catch (NotEnoughPointsException e){
                     message = e.getMessage();

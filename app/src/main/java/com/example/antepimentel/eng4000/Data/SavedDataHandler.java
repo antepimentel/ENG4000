@@ -1,4 +1,6 @@
-package com.example.antepimentel.eng4000;
+package com.example.antepimentel.eng4000.Data;
+
+import com.example.antepimentel.eng4000.Items.Item;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -16,6 +18,8 @@ public class SavedDataHandler {
     private static final String fInt = "integers";
     private static final String fBool = "bools";
     private static final String fString = "strings";
+    private static final String fItems = "items";
+    private static final String fChar = "char";
     private static final String delim = "#";
     private static PrintStream f_out;
     private static Scanner f_in;
@@ -29,8 +33,11 @@ public class SavedDataHandler {
         File f1 = new File(myDir, fInt);
         File f2 = new File(myDir, fBool);
         File f3 = new File(myDir, fString);
+        File f4 = new File(myDir, fItems);
+        File f5 = new File(myDir, fChar);
 
         System.out.println("========================== FILES CREATED ==========================");
+        System.out.println(myDir.getAbsoluteFile());
     }
 
     public static void clearData(File dir){
@@ -48,6 +55,14 @@ public class SavedDataHandler {
             File f3 = new File(myDir, fString);
             if(f3.exists())
                 f3.delete();
+
+            File f4 = new File(myDir, fItems);
+            if(f4.exists())
+                f4.delete();
+
+            File f5 = new File(myDir, fChar);
+            if(f5.exists())
+                f5.delete();
         }
         System.out.println("========================== DATA CLEARED ==========================");
         createFiles(dir);
@@ -91,6 +106,8 @@ public class SavedDataHandler {
             f_out.print(Model.pinNumber);
             f_out.print(delim);
 
+            f_out.print(Helper.formatDate(Model.getWeekStartDate()));
+            f_out.print(delim);
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -108,6 +125,48 @@ public class SavedDataHandler {
             e.printStackTrace();
         }
 
+        // SAVE ITEMS
+        try {
+            File temp = new File(myDir, fItems);
+            f_out = new PrintStream(temp);
+
+            for(int i = 0; i < Model.items.size(); i++){
+                f_out.print(Model.items.get(i).isObtained());
+                f_out.print(delim);
+            }
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        // SAVE SLOTS
+        try {
+            File temp = new File(myDir, fChar);
+            f_out = new PrintStream(temp);
+
+            f_out.print(Model.getSlots().get(Item.TYPE_HEAD));
+            f_out.print(delim);
+
+            f_out.print(Model.getSlots().get(Item.TYPE_FACE));
+            f_out.print(delim);
+
+            f_out.print(Model.getSlots().get(Item.TYPE_NECK));
+            f_out.print(delim);
+
+            f_out.print(Model.getSlots().get(Item.TYPE_TORSO));
+            f_out.print(delim);
+
+            f_out.print(Model.getSlots().get(Item.TYPE_HANDS));
+            f_out.print(delim);
+
+            f_out.print(Model.getSlots().get(Item.TYPE_FEET));
+            f_out.print(delim);
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        f_out.close();
         System.out.println("========================== DATA SAVED ==========================");
     }
 
@@ -115,8 +174,6 @@ public class SavedDataHandler {
         File myDir = new File(dir, baseDir);
 
         // LOAD INTEGERS
-
-        //f_in = new Scanner(new File(des+fInt));
         File temp = new File(myDir, fInt);
         f_in = new Scanner(temp);
 
@@ -130,23 +187,45 @@ public class SavedDataHandler {
 
 
         // LOAD STRINGS
-
         File temp2 = new File(myDir, fString);
         f_in = new Scanner(temp2);
 
         StringTokenizer st2 = new StringTokenizer(f_in.nextLine(), delim);
         Model.pinNumber = (st2.nextToken());
+        Model.setWeekStartDate(Helper.parseDate(st2.nextToken()));
 
 
         // LOAD BOOLEANS
-
         File temp3 = new File(myDir, fBool);
         f_in = new Scanner(temp3);
 
         StringTokenizer st3 = new StringTokenizer(f_in.nextLine(), delim);
-
         Model.setIsQuizCompleted(Boolean.parseBoolean(st3.nextToken()));
 
+
+        // LOAD ITEMS
+        File temp4 = new File(myDir, fItems);
+        f_in = new Scanner(temp4);
+
+        StringTokenizer st4 = new StringTokenizer(f_in.nextLine(), delim);
+        for(int i = 0; i < Model.items.size(); i++){
+            Model.items.get(i).setObtained(Boolean.parseBoolean(st4.nextToken()));
+        }
+
+        // LOAD CHAR
+        File temp5 = new File(myDir, fChar);
+        f_in = new Scanner(temp5);
+
+        StringTokenizer st5 = new StringTokenizer(f_in.nextLine(), delim);
+        Model.getSlots().put(Item.TYPE_HEAD, Integer.parseInt(st5.nextToken()));
+        Model.getSlots().put(Item.TYPE_FACE, Integer.parseInt(st5.nextToken()));
+        Model.getSlots().put(Item.TYPE_NECK, Integer.parseInt(st5.nextToken()));
+        Model.getSlots().put(Item.TYPE_TORSO, Integer.parseInt(st5.nextToken()));
+        Model.getSlots().put(Item.TYPE_HANDS, Integer.parseInt(st5.nextToken()));
+        Model.getSlots().put(Item.TYPE_FEET, Integer.parseInt(st5.nextToken()));
+
+
+        f_in.close();
         System.out.println("========================== DATA LOADED ==========================");
     }
 }

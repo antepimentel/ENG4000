@@ -4,6 +4,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import com.example.antepimentel.eng4000.Data.Helper;
+import com.example.antepimentel.eng4000.Data.Model;
+
 public class StatsView extends AppCompatActivity {
 
     @Override
@@ -16,10 +19,12 @@ public class StatsView extends AppCompatActivity {
         TextView  tv_score = (TextView)findViewById(R.id.tv_score);
         TextView  tv_weeklyScore = (TextView)findViewById(R.id.tv_weeklyscore);
         TextView  tv_lifetimescore = (TextView)findViewById(R.id.tv_lifetimescore);
+        TextView  tv_date = (TextView)findViewById(R.id.tv_date);
 
         tv_numGoals.setText("Completed Goals: " + Integer.toString(Model.getLifetimeCompletedGoals()));
         tv_score.setText("Total Score: " + Integer.toString(Model.getPointBalance()));
         tv_weeklyScore.setText("Weekly Score: " + Model.getWeeklyPoints());
         tv_lifetimescore.setText("Lifetime Score: " + Model.getLifetimePoints());
+        tv_date.setText("Week Start: " + Helper.formatDate(Model.getWeekStartDate()));
     }
 }

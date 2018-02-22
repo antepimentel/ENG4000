@@ -9,7 +9,8 @@ import android.view.MenuItem;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.example.antepimentel.eng4000.Model;
+import com.example.antepimentel.eng4000.Data.Helper;
+import com.example.antepimentel.eng4000.Data.Model;
 import com.example.antepimentel.eng4000.R;
 
 public class GoalView extends AppCompatActivity {
@@ -28,6 +29,9 @@ public class GoalView extends AppCompatActivity {
         adapter = new GoalAdapter(GoalView.this, Model.sGoals);
 
         listView.setAdapter(adapter);
+
+        // Debug code, leave this for now
+        //Model.setWeekStartDate(Helper.parseDate("Jan 2, 1994"));
     }
 
     @Override

@@ -1,8 +1,8 @@
-package com.example.antepimentel.eng4000.Goals;
+package com.example.antepimentel.eng4000.Settings;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
@@ -12,7 +12,7 @@ import android.widget.Toast;
 import com.example.antepimentel.eng4000.Data.Model;
 import com.example.antepimentel.eng4000.R;
 
-public class Submit extends AppCompatActivity {
+public class SettingsPin extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +26,7 @@ public class Submit extends AppCompatActivity {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_DONE) {
                     String t = v.getText().toString();
-                    String p = Model.pinNumber;
+                    String p = Model.testPin;
 
                     if(t.equals(p)){
                         Intent returnIntent = new Intent();
@@ -37,9 +37,7 @@ public class Submit extends AppCompatActivity {
 
                         killActivity();
                     } else {
-                        System.out.println(v.getText());
-                        System.out.println(Model.pinNumber);
-                        Toast.makeText(getApplicationContext(), "Incorrect Pin: " + v.getText(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Incorrect Pin", Toast.LENGTH_SHORT).show();
                     }
                 }
                 return false;

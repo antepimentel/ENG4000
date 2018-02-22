@@ -1,4 +1,4 @@
-package com.example.antepimentel.eng4000;
+package com.example.antepimentel.eng4000.Data;
 
 import com.example.antepimentel.eng4000.Exceptions.NotEnoughPointsException;
 import com.example.antepimentel.eng4000.Goals.Goal;
@@ -19,12 +19,14 @@ public class Model{
     //==== UNSAVED SYSTEM VALUES ====//
     public static boolean isInitialized = false;
     public static int itemCost = 100;
+    public static boolean inTestMode = false;
+    public static String testPin = "4000";
 
     //==== SAVED VALUES ====//
     // Stats
     private static int lifetimeCompletedGoals = 0;
     private static int lifetimePoints = 0;
-    private static int pointBalance = 1000;
+    private static int pointBalance = 0;
 
     // Weekly Values
     private static Date weekStartDate = new Date();
@@ -79,6 +81,19 @@ public class Model{
         slots.put(Item.TYPE_TORSO, -1);
         slots.put(Item.TYPE_FEET, -1);
         slots.put(Item.TYPE_HANDS, -1);
+
+        lifetimeCompletedGoals = 0;
+        lifetimePoints = 0;
+        pointBalance = 0;
+
+        // Weekly Values
+        weekStartDate = new Date();
+        weeklyPoints = 0;
+        isQuizCompleted = false;
+        quizID = 0;
+
+        // Settings
+        pinNumber = "0000";
 
         isInitialized = true;
     }
@@ -225,5 +240,9 @@ public class Model{
 
     public static int getLifetimeCompletedGoals() {
         return lifetimeCompletedGoals;
+    }
+
+    public static void setWeekStartDate(Date weekStartDate) {
+        Model.weekStartDate = weekStartDate;
     }
 }

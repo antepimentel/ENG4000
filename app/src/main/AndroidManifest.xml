@@ -34,7 +34,10 @@
         <activity android:name=".Goals.Submit" />
         <activity android:name=".Items.ItemView" />
         <activity android:name=".Quiz.QuizView" />
-        <activity android:name=".CharacterView"></activity>
+        <activity android:name=".CharacterView" />
+        <activity android:name=".Settings.SettingsView"></activity>
+        <activity android:name=".Settings.SettingsPin"
+            android:label="@string/title_activity_submit" />
     </application>
 
 </manifest>

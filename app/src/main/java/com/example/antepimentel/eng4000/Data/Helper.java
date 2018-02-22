@@ -1,4 +1,4 @@
-package com.example.antepimentel.eng4000;
+package com.example.antepimentel.eng4000.Data;
 
 import android.content.res.Resources;
 import android.util.DisplayMetrics;
@@ -8,8 +8,12 @@ import android.widget.Button;
 import com.example.antepimentel.eng4000.Goals.Goal;
 import com.example.antepimentel.eng4000.Items.Item;
 import com.example.antepimentel.eng4000.Quiz.QuizQuestion;
+import com.example.antepimentel.eng4000.R;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created by Ante Pimentel on 11/20/2017.
@@ -26,6 +30,24 @@ public class Helper {
     public static String game1 = "com.halfbrick.fruitninjafree";
     public static String game2 = "com.motionvolt.flipdiving";
     public static String game3 = "com.bitmango.rolltheballunrollme";
+
+    public static final String df = "MMM dd, yyyy";
+
+    public static String formatDate(Date date){
+        SimpleDateFormat sdf = new SimpleDateFormat(df);
+        return sdf.format(date);
+    }
+
+    public static Date parseDate(String date){
+        SimpleDateFormat sdf = new SimpleDateFormat(df);
+        try {
+            return sdf.parse(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+            System.out.println("Error parsing date");
+        }
+        return null;
+    }
 
     public static ArrayList<Item> loadItems(){
         ArrayList<Item> temp = new ArrayList<Item>();

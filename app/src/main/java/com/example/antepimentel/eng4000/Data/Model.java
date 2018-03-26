@@ -1,6 +1,6 @@
 package com.example.antepimentel.eng4000.Data;
 
-import com.example.antepimentel.eng4000.Exceptions.NotEnoughPointsException;
+import com.example.antepimentel.eng4000.Exceptions.PointsException;
 import com.example.antepimentel.eng4000.Goals.Goal;
 import com.example.antepimentel.eng4000.Items.Item;
 
@@ -38,8 +38,8 @@ public class Model{
     public static String pinNumber = "0000";
 
     // Data
-    public static ArrayList<Item> items = new ArrayList<Item>();
-    public static ArrayList<Goal> sGoals = new ArrayList<Goal>();
+    private static ArrayList<Item> items = new ArrayList<Item>();
+    private static ArrayList<Goal> goals = new ArrayList<Goal>();
 
     // Equip Items
     private static HashMap<Integer, Integer> slots = new HashMap<Integer, Integer>();
@@ -61,7 +61,12 @@ public class Model{
     }
 
     public static void saveData(File dir){
-        SavedDataHandler.saveData(dir);
+        try {
+            SavedDataHandler.saveData(dir);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            SavedDataHandler.clearData(dir);
+        }
     }
 
     public static void weeklyReset(){
@@ -72,7 +77,7 @@ public class Model{
     }
 
     public static void loadData(){
-        sGoals = Helper.loadGoals();
+        goals = Helper.loadGoals();
         items = Helper.loadItems();
 
         slots.put(Item.TYPE_FACE, -1);
@@ -98,24 +103,32 @@ public class Model{
         isInitialized = true;
     }
 
-    public static void addPoints(int p){
+    public static void addPoints(int p) throws PointsException{
+        if(p<0){
+            throw new PointsException("Value is negative");
+        } else if(lifetimePoints+p > Integer.MAX_VALUE){
+            throw new PointsException("Max point value reached");
+        }
+
         lifetimePoints = lifetimePoints + p;
         pointBalance = pointBalance + p;
         weeklyPoints = weeklyPoints + p;
     }
 
-    public static void subtractPoints(int p) throws NotEnoughPointsException{
-        if(pointBalance - p >= 0){
+    public static void subtractPoints(int p) throws PointsException{
+        if(p<0){
+            throw new PointsException("Value is negative");
+        } else if(pointBalance - p >= 0){
             pointBalance = pointBalance - p;
         } else {
-            throw new NotEnoughPointsException("Not enough points");
+            throw new PointsException("Not enough points");
         }
     }
 
     public static String print(){
         String temp = "==== BEGIN MODEL ====\n";
-        for(int i = 0; i < sGoals.size(); i++){
-            temp = temp + sGoals.get(i).print();
+        for(int i = 0; i < goals.size(); i++){
+            temp = temp + goals.get(i).print();
         }
         temp = temp + "==== END MODEL ====\n";
         return temp;
@@ -123,8 +136,8 @@ public class Model{
 
     public static int getNumCompletedGoals(){
         int k = 0;
-        for(int i = 0; i < sGoals.size(); i++){
-            if(sGoals.get(i).isCOMPLETE()){
+        for(int i = 0; i < goals.size(); i++){
+            if(goals.get(i).isCOMPLETE()){
                 k++;
             }
         }
@@ -133,18 +146,18 @@ public class Model{
 
     public static int getTotalScore(){
         int total = 0;
-        for(int i = 0; i < sGoals.size(); i++){
-            if(sGoals.get(i).isCOMPLETE()){
-                total += sGoals.get(i).getVALUE();
+        for(int i = 0; i < goals.size(); i++){
+            if(goals.get(i).isCOMPLETE()){
+                total += goals.get(i).getVALUE();
             }
         }
         return total;
     }
 
     public static void resetGoals(){
-        for(int i = 0; i < sGoals.size(); i++){
-            if(sGoals.get(i).isCOMPLETE()){
-                sGoals.get(i).setCOMPLETE(false);
+        for(int i = 0; i < goals.size(); i++){
+            if(goals.get(i).isCOMPLETE()){
+                goals.get(i).setCOMPLETE(false);
             }
         }
     }
@@ -165,7 +178,7 @@ public class Model{
 
     private static int randomIntWithinRange(){
         int total = getTotalItemWeight();
-        return (int)(Math.random() * total) + 1;
+        return (int)(Math.random() * total);
     }
 
     public static int getRandomItem(){
@@ -244,5 +257,21 @@ public class Model{
 
     public static void setWeekStartDate(Date weekStartDate) {
         Model.weekStartDate = weekStartDate;
+    }
+
+    public static ArrayList<Item> getItems() {
+        return items;
+    }
+
+    public static void setItems(ArrayList<Item> items) {
+        Model.items = items;
+    }
+
+    public static ArrayList<Goal> getGoals() {
+        return goals;
+    }
+
+    public static void setGoals(ArrayList<Goal> goals) {
+        Model.goals = goals;
     }
 }

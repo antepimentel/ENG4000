@@ -24,8 +24,8 @@ import java.util.Date;
 
 public class Helper {
 
-    private static int buttonHeight = getScreenHeight()/10;
-    private static int buttonWidth = (getScreenWidth()/2) - (getScreenWidth()/15);
+    //private static int buttonHeight = getScreenHeight()/10;
+    //private static int buttonWidth = (getScreenWidth()/2) - (getScreenWidth()/15);
 
     public static String game1 = "com.halfbrick.fruitninjafree";
     public static String game2 = "com.motionvolt.flipdiving";
@@ -179,6 +179,8 @@ public class Helper {
     }
 
     public static void setButtonSize(Button b){
+        int buttonHeight = getScreenHeight()/10;
+        int buttonWidth = (getScreenWidth()/2) - (getScreenWidth()/15);
         ViewGroup.LayoutParams params = b.getLayoutParams();
         params.width = buttonWidth;
         params.height = buttonHeight;

@@ -24,7 +24,7 @@ public class ItemView extends AppCompatActivity {
         listView = (ListView)findViewById(R.id.list_view);
 
         // Setup the adapter
-        adapter = new ItemAdapter(ItemView.this, Model.items);
+        adapter = new ItemAdapter(ItemView.this, Model.getItems());
         listView.setAdapter(adapter);
 
         // Setup the on click listener
@@ -33,7 +33,7 @@ public class ItemView extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 final int posSelected = position;
-                Item itemSelected = Model.items.get(posSelected);
+                Item itemSelected = Model.getItems().get(posSelected);
 
                 if(itemSelected.isObtained()){
                     if(itemSelected.getImage() == Model.getSlots().get(itemSelected.getType())){

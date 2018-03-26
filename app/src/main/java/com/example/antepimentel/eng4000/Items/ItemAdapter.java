@@ -37,14 +37,14 @@ public class ItemAdapter extends ArrayAdapter<Item> {
         ImageView icon = (ImageView)convertView.findViewById(R.id.imageView2);
 
         //Set the name
-        String temp = Model.items.get(position).getName();
+        String temp = Model.getItems().get(position).getName();
         name.setText(temp);
 
         //Set the icon
-        icon.setImageResource(Model.items.get(position).getIcon());
+        icon.setImageResource(Model.getItems().get(position).getIcon());
 
         //Set the check mark if obtained
-        if(Model.items.get(position).isObtained()){
+        if(Model.getItems().get(position).isObtained()){
             checked.setVisibility(View.VISIBLE);
         } else {
             checked.setVisibility(View.GONE);

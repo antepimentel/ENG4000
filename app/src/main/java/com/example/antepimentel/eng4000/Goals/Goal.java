@@ -11,7 +11,7 @@ import java.security.MessageDigest;
  * Simple object class for holding Goal attributes
  */
 
-public class Goal implements Parcelable{
+public class Goal{
 
     public static final int TYPE_WATER = 0;
     public static final int TYPE_ELEC = 1;
@@ -45,38 +45,38 @@ public class Goal implements Parcelable{
 
     //========= PARCEL METHODS =========//
 
-    private Goal(Parcel in){
-
-        TITLE = in.readString();
-        VALUE = in.readInt();
-        TYPE = in.readInt();
-        COMPLETE = in.readByte() != 0;
-    }
-
-    public static final Creator<Goal> CREATOR = new Creator<Goal>() {
-        @Override
-        public Goal createFromParcel(Parcel in) {
-            return new Goal(in);
-        }
-
-        @Override
-        public Goal[] newArray(int size) {
-            return new Goal[size];
-        }
-    };
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(TITLE);
-        dest.writeInt(VALUE);
-        dest.writeInt(TYPE);
-        dest.writeByte((byte) (COMPLETE ? 1 : 0));
-    }
+//    private Goal(Parcel in){
+//
+//        TITLE = in.readString();
+//        VALUE = in.readInt();
+//        TYPE = in.readInt();
+//        COMPLETE = in.readByte() != 0;
+//    }
+//
+//    public static final Creator<Goal> CREATOR = new Creator<Goal>() {
+//        @Override
+//        public Goal createFromParcel(Parcel in) {
+//            return new Goal(in);
+//        }
+//
+//        @Override
+//        public Goal[] newArray(int size) {
+//            return new Goal[size];
+//        }
+//    };
+//
+//    @Override
+//    public int describeContents() {
+//        return 0;
+//    }
+//
+//    @Override
+//    public void writeToParcel(Parcel dest, int flags) {
+//        dest.writeString(TITLE);
+//        dest.writeInt(VALUE);
+//        dest.writeInt(TYPE);
+//        dest.writeByte((byte) (COMPLETE ? 1 : 0));
+//    }
 
     //========= GETTERS AND SETTERS =========//
 

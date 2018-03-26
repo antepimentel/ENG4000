@@ -26,7 +26,7 @@ public class GoalView extends AppCompatActivity {
 
 
         listView = (ListView)findViewById(R.id.list_view);
-        adapter = new GoalAdapter(GoalView.this, Model.sGoals);
+        adapter = new GoalAdapter(GoalView.this, Model.getGoals());
 
         listView.setAdapter(adapter);
 

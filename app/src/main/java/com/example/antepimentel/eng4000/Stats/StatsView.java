@@ -1,4 +1,4 @@
-package com.example.antepimentel.eng4000;
+package com.example.antepimentel.eng4000.Stats;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -6,6 +6,7 @@ import android.widget.TextView;
 
 import com.example.antepimentel.eng4000.Data.Helper;
 import com.example.antepimentel.eng4000.Data.Model;
+import com.example.antepimentel.eng4000.R;
 
 public class StatsView extends AppCompatActivity {
 

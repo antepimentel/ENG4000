@@ -1,4 +1,4 @@
-package com.example.antepimentel.eng4000;
+package com.example.antepimentel.eng4000.Character;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import com.example.antepimentel.eng4000.Data.Model;
 import com.example.antepimentel.eng4000.Items.Item;
 import com.example.antepimentel.eng4000.Items.ItemView;
+import com.example.antepimentel.eng4000.R;
 
 public class CharacterView extends AppCompatActivity {
 

@@ -4,9 +4,9 @@ package com.example.antepimentel.eng4000.Exceptions;
  * Created by Ante Pimentel on 2/2/2018.
  */
 
-public class NotEnoughPointsException extends RuntimeException{
+public class PointsException extends RuntimeException{
 
-    public NotEnoughPointsException(String message){
+    public PointsException(String message){
         super(message);
     }
 }

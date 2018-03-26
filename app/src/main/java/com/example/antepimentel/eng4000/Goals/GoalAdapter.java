@@ -45,7 +45,7 @@ public class GoalAdapter extends ArrayAdapter<Goal>{
         final int index = position; // This isn't really needed
 
         // Set the proper icon for the goal type
-        switch(Model.sGoals.get(index).getID()){
+        switch(Model.getGoals().get(index).getID()){
 
             case Goal.TYPE_ELEC:
                 icon.setImageResource(R.mipmap.electrical_plug);
@@ -72,15 +72,15 @@ public class GoalAdapter extends ArrayAdapter<Goal>{
 
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                Model.sGoals.get(index).setCOMPLETE(isChecked);
+                Model.getGoals().get(index).setCOMPLETE(isChecked);
                 System.out.println(Model.print());
             }
         });
 
         // Note: These 3 lines need to be AFTER the setOnChecked listener or the checkboxes will always reset on scrolling
-        cb.setChecked(Model.sGoals.get(position).isCOMPLETE());
-        title.setText(Model.sGoals.get(position).getTITLE());
-        points.setText("Value: " + Integer.toString(Model.sGoals.get(position).getVALUE()));
+        cb.setChecked(Model.getGoals().get(position).isCOMPLETE());
+        title.setText(Model.getGoals().get(position).getTITLE());
+        points.setText("Value: " + Integer.toString(Model.getGoals().get(position).getVALUE()));
 
         return convertView;
     }

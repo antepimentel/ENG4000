@@ -1,21 +1,27 @@
-package com.example.antepimentel.eng4000;
+package com.example.antepimentel.eng4000.MainMenu;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.antepimentel.eng4000.Character.CharacterView;
 import com.example.antepimentel.eng4000.Data.Helper;
 import com.example.antepimentel.eng4000.Data.Model;
-import com.example.antepimentel.eng4000.Exceptions.NotEnoughPointsException;
+import com.example.antepimentel.eng4000.Exceptions.PointsException;
 import com.example.antepimentel.eng4000.Games.GamesView;
 import com.example.antepimentel.eng4000.Goals.GoalView;
 import com.example.antepimentel.eng4000.Items.ItemView;
 import com.example.antepimentel.eng4000.Quiz.QuizView;
+import com.example.antepimentel.eng4000.R;
 import com.example.antepimentel.eng4000.Settings.SettingsView;
+import com.example.antepimentel.eng4000.Stats.StatsView;
 
 public class MainMenu extends AppCompatActivity {
 
@@ -81,14 +87,14 @@ public class MainMenu extends AppCompatActivity {
         });
 
         // Settings
-        Button b5 = (Button) findViewById(R.id.button5);
-
-        b5.setOnClickListener(new Button.OnClickListener() {
-            public void onClick(View v) {
-                Intent intent = new Intent(MainMenu.this, SettingsView.class);
-                startActivity(intent);
-            }
-        });
+//        Button b5 = (Button) findViewById(R.id.button5);
+//
+//        b5.setOnClickListener(new Button.OnClickListener() {
+//            public void onClick(View v) {
+//                Intent intent = new Intent(MainMenu.this, SettingsView.class);
+//                startActivity(intent);
+//            }
+//        });
 
         // Quiz
         Button b6 = (Button) findViewById(R.id.button6);
@@ -111,11 +117,11 @@ public class MainMenu extends AppCompatActivity {
                 try{
                     Model.subtractPoints(Model.itemCost);
                     int item = Model.getRandomItem();
-                    Model.items.get(item).setObtained(true);
-                    message = "You got: "+ Model.items.get(item).getName();
+                    Model.getItems().get(item).setObtained(true);
+                    message = "You got: "+ Model.getItems().get(item).getName();
                     Model.saveData(getFilesDir());
 
-                } catch (NotEnoughPointsException e){
+                } catch (PointsException e){
                     message = e.getMessage();
                 }
 
@@ -138,6 +144,25 @@ public class MainMenu extends AppCompatActivity {
     public void onDestroy(){
         super.onDestroy();
         Model.saveData(getFilesDir());
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        MenuInflater menuInf = getMenuInflater();
+        menuInf.inflate(R.menu.menu_main_settings, menu);
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        int res_id = item.getItemId();
+        if(res_id == R.id.settings_main){
+
+            Intent intent = new Intent(MainMenu.this, SettingsView.class);
+            startActivity(intent);
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 }

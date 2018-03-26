@@ -4,6 +4,7 @@ import com.example.antepimentel.eng4000.Items.Item;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.PrintStream;
 import java.util.Scanner;
 import java.util.StringTokenizer;
@@ -25,7 +26,7 @@ public class SavedDataHandler {
     private static Scanner f_in;
 
 
-    public static void createFiles(File dir){
+    public static void createFiles(File dir) {
         File myDir = new File(dir, baseDir);
         if(!myDir.exists()){
             myDir.mkdir();
@@ -68,106 +69,89 @@ public class SavedDataHandler {
         createFiles(dir);
     }
 
-    public static void saveData(File dir){
+    public static void saveData(File dir) throws FileNotFoundException {
         //String des = dir.getPath() + baseDir;
         File myDir = new File(dir, baseDir);
-        if(!myDir.exists()){
+        if (!myDir.exists()) {
             myDir.mkdir();
         }
+
+        File strings = new File(myDir, fString);
+        File integers = new File(myDir, fInt);
+        File items = new File(myDir, fItems);
+        File character = new File(myDir, fChar);
+        File bools = new File(myDir, fBool);
+
+
         // SAVE INTEGERS
-        try {
-            //f_out = new PrintStream(new File(des+fInt));
-            File temp = new File(myDir, fInt);
-            f_out = new PrintStream(temp);
+        f_out = new PrintStream(integers);
 
-            f_out.print(Model.getLifetimeCompletedGoals());
-            f_out.print(delim);
+        f_out.print(Model.getLifetimeCompletedGoals());
+        f_out.print(delim);
 
-            f_out.print(Model.getLifetimePoints());
-            f_out.print(delim);
+        f_out.print(Model.getLifetimePoints());
+        f_out.print(delim);
 
-            f_out.print(Model.getPointBalance());
-            f_out.print(delim);
+        f_out.print(Model.getPointBalance());
+        f_out.print(delim);
 
-            f_out.print(Model.getWeeklyPoints());
-            f_out.print(delim);
+        f_out.print(Model.getWeeklyPoints());
+        f_out.print(delim);
 
-            f_out.print(Model.getQuizID());
+        f_out.print(Model.getQuizID());
 
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
 
         // SAVE STRINGS
-        try {
-            File temp = new File(myDir, fString);
-            f_out = new PrintStream(temp);
+        f_out = new PrintStream(strings);
 
-            f_out.print(Model.pinNumber);
-            f_out.print(delim);
+        f_out.print(Model.pinNumber);
+        f_out.print(delim);
 
-            f_out.print(Helper.formatDate(Model.getWeekStartDate()));
-            f_out.print(delim);
+        f_out.print(Helper.formatDate(Model.getWeekStartDate()));
+        f_out.print(delim);
 
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
 
         // SAVE BOOLEANS
-        try {
-            File temp = new File(myDir, fBool);
-            f_out = new PrintStream(temp);
+        f_out = new PrintStream(bools);
 
-            f_out.print(Model.isQuizCompleted());
-            f_out.print(delim);
+        f_out.print(Model.isQuizCompleted());
+        f_out.print(delim);
 
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
 
         // SAVE ITEMS
-        try {
-            File temp = new File(myDir, fItems);
-            f_out = new PrintStream(temp);
+        f_out = new PrintStream(items);
 
-            for(int i = 0; i < Model.items.size(); i++){
-                f_out.print(Model.items.get(i).isObtained());
-                f_out.print(delim);
-            }
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+        for (int i = 0; i < Model.getItems().size(); i++) {
+            f_out.print(Model.getItems().get(i).isObtained());
+            f_out.print(delim);
         }
+
 
         // SAVE SLOTS
-        try {
-            File temp = new File(myDir, fChar);
-            f_out = new PrintStream(temp);
+        f_out = new PrintStream(character);
 
-            f_out.print(Model.getSlots().get(Item.TYPE_HEAD));
-            f_out.print(delim);
+        f_out.print(Model.getSlots().get(Item.TYPE_HEAD));
+        f_out.print(delim);
 
-            f_out.print(Model.getSlots().get(Item.TYPE_FACE));
-            f_out.print(delim);
+        f_out.print(Model.getSlots().get(Item.TYPE_FACE));
+        f_out.print(delim);
 
-            f_out.print(Model.getSlots().get(Item.TYPE_NECK));
-            f_out.print(delim);
+        f_out.print(Model.getSlots().get(Item.TYPE_NECK));
+        f_out.print(delim);
 
-            f_out.print(Model.getSlots().get(Item.TYPE_TORSO));
-            f_out.print(delim);
+        f_out.print(Model.getSlots().get(Item.TYPE_TORSO));
+        f_out.print(delim);
 
-            f_out.print(Model.getSlots().get(Item.TYPE_HANDS));
-            f_out.print(delim);
+        f_out.print(Model.getSlots().get(Item.TYPE_HANDS));
+        f_out.print(delim);
 
-            f_out.print(Model.getSlots().get(Item.TYPE_FEET));
-            f_out.print(delim);
+        f_out.print(Model.getSlots().get(Item.TYPE_FEET));
+        f_out.print(delim);
 
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
 
         f_out.close();
         System.out.println("========================== DATA SAVED ==========================");
+        System.out.println(myDir.getAbsolutePath());
     }
 
     public static void loadData(File dir) throws FileNotFoundException {
@@ -208,8 +192,8 @@ public class SavedDataHandler {
         f_in = new Scanner(temp4);
 
         StringTokenizer st4 = new StringTokenizer(f_in.nextLine(), delim);
-        for(int i = 0; i < Model.items.size(); i++){
-            Model.items.get(i).setObtained(Boolean.parseBoolean(st4.nextToken()));
+        for(int i = 0; i < Model.getItems().size(); i++){
+            Model.getItems().get(i).setObtained(Boolean.parseBoolean(st4.nextToken()));
         }
 
         // LOAD CHAR

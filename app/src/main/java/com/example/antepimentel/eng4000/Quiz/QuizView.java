@@ -72,6 +72,8 @@ public class QuizView extends AppCompatActivity {
             buttons.add(op2);
             buttons.add(op3);
 
+            Helper.setButtonSize(submit);
+
             quiz = Helper.getQuiz(Model.getQuizID());
             currentQuestion = 0;
 
@@ -82,13 +84,19 @@ public class QuizView extends AppCompatActivity {
                     int selected = radioGroup.getCheckedRadioButtonId();
                     int indexOfSelected = radioGroup.indexOfChild(findViewById(selected));
 
-                    if(indexOfSelected > 0){
+                    if(indexOfSelected >= 0){
                         quiz.get(currentQuestion).setSelected(indexOfSelected);
 
                         // Reply if answer is correct
+                        String reply = "";
                         if(quiz.get(currentQuestion).isCorrect()){
-                            Toast.makeText(getApplicationContext(), "Correct!", Toast.LENGTH_SHORT).show();
+                            reply = "Correct!";
+                        } else {
+                            int index = quiz.get(currentQuestion).getAnswer();
+                            String answer = quiz.get(currentQuestion).getOptions()[index];
+                            reply = "Incorrect! The answer was : " + answer;
                         }
+                        Toast.makeText(getApplicationContext(), reply, Toast.LENGTH_SHORT).show();
 
                         if(quiz.size() - 1 == currentQuestion){
                             //END

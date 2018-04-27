@@ -2,6 +2,7 @@ package com.example.antepimentel.eng4000.Data;
 
 import android.content.res.Resources;
 import android.util.DisplayMetrics;
+import android.util.TypedValue;
 import android.view.ViewGroup;
 import android.widget.Button;
 
@@ -170,6 +171,7 @@ public class Helper {
 
         return quiz;
     }
+
     public static int getScreenWidth() {
         return Resources.getSystem().getDisplayMetrics().widthPixels;
     }
@@ -185,5 +187,6 @@ public class Helper {
         params.width = buttonWidth;
         params.height = buttonHeight;
         b.setLayoutParams(params);
+        b.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15);
     }
 }

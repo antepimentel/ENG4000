@@ -171,7 +171,9 @@ public class Model{
     public static int getTotalItemWeight(){
         int total = 0;
         for(int i = 0; i < items.size(); i++){
-            total = total + items.get(i).getWeight();
+            if(!items.get(i).isObtained()) {
+                total = total + items.get(i).getWeight();
+            }
         }
         return total;
     }
@@ -187,11 +189,14 @@ public class Model{
         int i, j;
 
         for(i = 0; i < items.size(); i++){
-            for(j = 0; j < items.get(i).getWeight(); j++){
-                if(counter == target){
-                    return i;
-                } else {
-                    counter++;
+            if(!items.get(i).isObtained()){
+                for(j = 0; j < items.get(i).getWeight(); j++){
+                    if(counter == target){
+                        items.get(i).setObtained(true);
+                        return i;
+                    } else {
+                        counter++;
+                    }
                 }
             }
         }

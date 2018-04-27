@@ -221,4 +221,18 @@ public class ModelUnitTest {
         return;
         // All errors should be handled internally
     }
+
+    @Test
+    public void getAllItems(){
+        Model.loadData();
+
+        for(int i = 0; i < Model.getItems().size(); i++){
+            Model.getRandomItem();
+        }
+
+        for(int j = 0; j < Model.getItems().size(); j++){
+            System.out.println(j + " : " + Model.getItems().get(j).isObtained());
+            assertTrue(Model.getItems().get(j).isObtained());
+        }
+    }
 }
